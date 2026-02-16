@@ -9,23 +9,30 @@
       <span class="brand__name">Online Store</span>
     </a>
 
-    <nav class="links">
-      @for (item of navItems; track item.path) {
-        <a
-          class="links__item"
-          [routerLink]="item.path === '' ? '/' : '/' + item.path"
-          routerLinkActive="isActive"
-          [routerLinkActiveOptions]="{ exact: item.path === '' }"
-        >
-          {{ item.label }}
-        </a>
-      }
-    </nav>
+    @if (showInlineLinks()) {
+      <nav class="links">
+        @for (item of navItems; track item.path) {
+          <a
+            class="links__item"
+            [routerLink]="item.path === '' ? '/' : '/' + item.path"
+            routerLinkActive="isActive"
+            [routerLinkActiveOptions]="{ exact: item.path === '' }"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </nav>
+    } @else {
+      <span class="spacer"></span>
+    }
 
     <div class="right">
-      <span class="search">
-        <input pInputText type="text" placeholder="Search products..." />
-      </span>
+      <!-- hide search on mobile (or make it icon-only) -->
+      @if (showInlineLinks()) {
+        <span class="search">
+          <input pInputText type="text" placeholder="Search products..." />
+        </span>
+      }
 
       <button class="iconBtn" type="button" (click)="auth.open()" aria-label="Account">
         <i class="pi pi-user"></i>
@@ -37,6 +44,48 @@
           <span class="badge">{{ cart.count() }}</span>
         }
       </button>
+
+      @if (!showInlineLinks()) {
+        <button class="iconBtn" type="button" (click)="openMobile()" aria-label="Menu">
+          <i class="pi pi-bars"></i>
+        </button>
+      }
     </div>
   </div>
 </header>
+
+<!-- Mobile drawer -->
+<p-drawer
+  [(visible)]="mobileOpen()"
+  position="right"
+  [modal]="true"
+  [dismissible]="true"
+  styleClass="mobileNav"
+>
+  <div class="mobileNav__content">
+    <div class="mobileNav__header">
+      <div class="mobileNav__title">Menu</div>
+      <button class="iconBtn" type="button" (click)="closeMobile()" aria-label="Close menu">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <div class="mobileNav__search">
+      <input pInputText type="text" placeholder="Search products..." />
+    </div>
+
+    <nav class="mobileNav__links">
+      @for (item of navItems; track item.path) {
+        <a
+          class="mobileNav__item"
+          [routerLink]="item.path === '' ? '/' : '/' + item.path"
+          routerLinkActive="isActive"
+          [routerLinkActiveOptions]="{ exact: item.path === '' }"
+          (click)="closeMobile()"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+  </div>
+</p-drawer>

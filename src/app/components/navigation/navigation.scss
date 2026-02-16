@@ -126,3 +126,77 @@
   place-items: center;
   font-weight: 800;
 }
+
+/* helps when links/search can't fit */
+.spacer {
+  flex: 1;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .nav__inner {
+    height: auto;
+    min-height: 64px;
+    padding: 10px 0;
+    gap: 12px;
+  }
+
+  .brand__name {
+    font-size: 16px;
+  }
+
+  .search input {
+    width: 100%;
+  }
+}
+
+/* PrimeNG Drawer mobile menu styling */
+:host ::ng-deep .mobileNav {
+  width: min(86vw, 360px);
+  background: var(--bg);
+}
+
+.mobileNav__content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobileNav__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileNav__title {
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.mobileNav__search input {
+  width: 100%;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.mobileNav__links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobileNav__item {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0,0,0,0.06);
+
+  &.isActive {
+    color: rgba(0, 0, 0, 0.95);
+    font-weight: 800;
+    border-color: rgba(0,0,0,0.12);
+  }
+}
