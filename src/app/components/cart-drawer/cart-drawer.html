@@ -1,0 +1,88 @@
+<p-drawer
+  position="right"
+  [visible]="cart.isOpen()"
+  (onHide)="cart.close()"
+  [closable]="true"
+  [modal]="true"
+  styleClass="cartDrawer"
+>
+  <ng-template pTemplate="header">
+    <div class="header">
+      <div class="title">Coșul tău</div>
+      <div class="count">
+        @if (cart.count() > 0) { {{ cart.count() }} produse }
+      </div>
+    </div>
+  </ng-template>
+
+  @if (cart.items().length === 0) {
+    <div class="empty">
+      <div class="empty__icon">🛒</div>
+      <div class="empty__title">Coșul este gol</div>
+      <div class="empty__subtitle">Adaugă produse ca să le vezi aici.</div>
+      <button pButton type="button" class="btnOutline" (click)="cart.close()">
+        Continuă cumpărăturile
+      </button>
+    </div>
+  } @else {
+    <div class="drawerBody">
+      <!-- Scrollable area -->
+      <div class="list">
+        @for (it of cart.items(); track it.id) {
+          <div class="item">
+            <img
+              class="item__img"
+              [src]="it.imageUrl || 'assets/clutch-bag.jpg'"
+              alt=""
+            />
+
+            <div class="item__info">
+              <div class="item__name">{{ it.name }}</div>
+              <div class="item__price">{{ it.price }} lei</div>
+
+              <div class="qty">
+                <button pButton type="button" class="qtyBtn" (click)="cart.dec(it.id)">-</button>
+                <span class="qtyVal">{{ it.qty }}</span>
+                <button pButton type="button" class="qtyBtn" (click)="cart.inc(it.id)">+</button>
+
+                <button
+                  pButton
+                  type="button"
+                  class="removeBtn"
+                  (click)="cart.remove(it.id)"
+                  aria-label="Remove"
+                >
+                  <i class="pi pi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Sticky footer -->
+      <div class="drawerFooter">
+        <p-divider></p-divider>
+
+        <div class="summary">
+          <div class="row">
+            <span>Subtotal</span>
+            <strong>{{ cart.subtotal() }} lei</strong>
+          </div>
+
+          <div class="hint">Transportul se calculează la finalizare.</div>
+
+          <div class="actions">
+            <button pButton type="button" class="btnOutline" (click)="cart.clear()">
+              Golește coșul
+            </button>
+
+            <button pButton type="button" class="btnPrimary" (click)="finalize()">
+              Finalizează comanda
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</p-drawer>

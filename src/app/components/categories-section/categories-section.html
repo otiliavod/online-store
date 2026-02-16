@@ -1,0 +1,32 @@
+<section class="categories-section">
+  <div class="container">
+    <h2 class="title">{{ content.title }}</h2>
+    <p class="subtitle">{{ content.subtitle }}</p>
+
+    <div class="grid">
+      @for (item of content.items; track item.title) {
+        <app-category-card [item]="item"></app-category-card>
+      }
+    </div>
+
+    @if (content.promo) {
+      <div class="promo" [class.promo--warm]="content.promo.variant === 'warm'">
+        <div class="promo__content">
+          <h3 class="promo__title">{{ content.promo.title }}</h3>
+          <p class="promo__desc">{{ content.promo.description }}</p>
+
+          <p-button
+            class="promoBtn"
+            [label]="content.promo.ctaLabel"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            (onClick)="goTo('categories')"
+          ></p-button>
+        </div>
+
+        <div class="promo__dot promo__dot--top"></div>
+        <div class="promo__dot promo__dot--bottom"></div>
+      </div>
+    }
+  </div>
+</section>

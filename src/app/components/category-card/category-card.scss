@@ -1,0 +1,90 @@
+.category-card {
+  height: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--card);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  display: flex;
+  flex-direction: column;
+
+  .p-card-body {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .image-wrap {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  .count {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .desc {
+    margin: 0.8rem 0 1.5rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .footer {
+    margin-top: auto;
+  }
+
+  /* Hover Effect */
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+    .image-wrap img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* Base button style */
+:host ::ng-deep .ctaBtn .p-button {
+  width: 100%;
+  border-radius: 14px;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+/* Card hover => make CTA brand */
+.category-card:hover :host ::ng-deep .ctaBtn .p-button,
+.category-card:hover :host ::ng-deep .ctaBtn .p-button:hover,
+.category-card:hover :host ::ng-deep .ctaBtn .p-button:focus,
+.category-card:hover :host ::ng-deep .ctaBtn .p-button:active {
+  background: var(--brand) !important;
+  border-color: var(--brand) !important;
+  color: #fff !important;
+}
+
+/* Also ensure icon becomes white */
+.category-card:hover :host ::ng-deep .ctaBtn .p-button .p-button-icon {
+  color: #fff !important;
+}
+

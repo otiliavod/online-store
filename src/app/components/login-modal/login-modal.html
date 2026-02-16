@@ -1,0 +1,86 @@
+<p-dialog
+  [visible]="auth.isOpen()"
+  (visibleChange)="auth.isOpen.set($event)"
+  [modal]="true"
+  [dismissableMask]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="loginModal"
+>
+  <ng-template pTemplate="header">
+    <div class="loginModal__header">
+      <div class="loginModal__headerSide" aria-hidden="true"></div>
+
+      <div class="loginModal__headerCenter">
+        <div class="loginModal__logo" aria-hidden="true">OS</div>
+      </div>
+
+      <div class="loginModal__headerSide" aria-hidden="true"></div>
+    </div>
+  </ng-template>
+
+  <div class="loginModal__body">
+
+    <h2 class="loginModal__title">Bun venit la Online Store</h2>
+    <p class="loginModal__subtitle">Conectează-te sau creează un cont pentru a continua</p>
+
+    <div class="tabs" role="tablist" aria-label="Autentificare">
+      <button
+        type="button"
+        class="tab"
+        [class.tab--active]="mode === 'login'"
+        (click)="setMode('login')"
+      >
+        Conectare
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        [class.tab--active]="mode === 'register'"
+        (click)="setMode('register')"
+      >
+        Înregistrare
+      </button>
+    </div>
+
+    @if (mode === 'login') {
+      <div class="form">
+        <label class="label">Email</label>
+        <input pInputText type="email" [(ngModel)]="loginEmail" placeholder="exemplu@email.com" />
+
+        <label class="label">Parolă</label>
+        <p-password
+          [(ngModel)]="loginPassword"
+          [toggleMask]="true"
+          [feedback]="false"
+          placeholder="Parola ta"
+          styleClass="pw"
+        ></p-password>
+
+        <button pButton type="button" class="btnPrimary" (click)="submitLogin()">
+          Conectează-te
+        </button>
+      </div>
+    } @else {
+      <div class="form">
+        <label class="label">Email</label>
+        <input pInputText type="email" [(ngModel)]="regEmail" placeholder="exemplu@email.com" />
+
+        <label class="label">Parolă</label>
+        <p-password
+          [(ngModel)]="regPassword"
+          [toggleMask]="true"
+          [feedback]="true"
+          placeholder="Parola ta"
+          styleClass="pw"
+        ></p-password>
+
+        <button pButton type="button" class="btnPrimary" (click)="submitRegister()">
+          Conectează-te
+        </button>
+      </div>
+    }
+  </div>
+</p-dialog>

@@ -1,0 +1,42 @@
+<header
+  class="nav"
+  [class.nav--transparent]="isHome && !isScrolled"
+  [class.nav--solid]="!isHome || isScrolled"
+>
+  <div class="container nav__inner">
+    <a class="brand" routerLink="/">
+      <span class="brand__mark">OS</span>
+      <span class="brand__name">Online Store</span>
+    </a>
+
+    <nav class="links">
+      @for (item of navItems; track item.path) {
+        <a
+          class="links__item"
+          [routerLink]="item.path === '' ? '/' : '/' + item.path"
+          routerLinkActive="isActive"
+          [routerLinkActiveOptions]="{ exact: item.path === '' }"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="right">
+      <span class="search">
+        <input pInputText type="text" placeholder="Search products..." />
+      </span>
+
+      <button class="iconBtn" type="button" (click)="auth.open()" aria-label="Account">
+        <i class="pi pi-user"></i>
+      </button>
+
+      <button class="iconBtn cartBtn" type="button" (click)="cart.open()" aria-label="Cart">
+        <i class="pi pi-shopping-cart"></i>
+        @if (cart.count() > 0) {
+          <span class="badge">{{ cart.count() }}</span>
+        }
+      </button>
+    </div>
+  </div>
+</header>

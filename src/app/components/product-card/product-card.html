@@ -1,0 +1,48 @@
+<div class="product-card">
+  <div class="image-wrap">
+    <img [src]="product.imageUrl" [alt]="product.title" />
+
+    <!-- Badges -->
+    @if (product.isNew) {
+      <span class="badge badge--new">Nou</span>
+    }
+    @if (product.discountPercent) {
+      <span class="badge badge--discount">-{{ product.discountPercent }}%</span>
+    }
+
+    <!-- Favorite -->
+    <button class="fav" (click)="toggleFavorite()">
+      <i
+        class="pi"
+        [class.pi-heart]="!isFavorite()"
+        [class.pi-heart-fill]="isFavorite()"
+      ></i>
+    </button>
+  </div>
+
+  <div class="content">
+    <h3 class="title">{{ product.title }}</h3>
+
+    <!-- Rating -->
+    <div class="rating">
+      <span class="stars">
+        @for (star of [1,2,3,4,5]; track star) {
+          <i
+            class="pi"
+            [class.pi-star-fill]="product.rating >= star"
+            [class.pi-star]="product.rating < star"
+          ></i>
+        }
+      </span>
+      <span class="count">({{ product.reviewsCount }})</span>
+    </div>
+
+    <!-- Price -->
+    <div class="price">
+      <span class="current">{{ product.price }} LEI</span>
+      @if (product.oldPrice) {
+        <span class="old">{{ product.oldPrice }} LEI</span>
+      }
+    </div>
+  </div>
+</div>

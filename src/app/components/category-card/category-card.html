@@ -1,0 +1,29 @@
+<p-card class="category-card">
+  <ng-template pTemplate="header">
+    <div class="image-wrap">
+      <img [src]="item.imageUrl" [alt]="item.title" loading="lazy" />
+    </div>
+  </ng-template>
+
+  <div class="body">
+    <div class="top">
+      <h3 class="title">{{ item.title }}</h3>
+      <div class="count">{{ item.productCount }} produse</div>
+    </div>
+
+    <p class="desc">{{ item.description }}</p>
+
+    <div class="footer">
+      <div class="footer">
+        <p-button
+          class="ctaBtn"
+          severity="secondary"
+          [label]="item.ctaLabel"
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          (onClick)="goTo(item.ctaTarget)"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</p-card>

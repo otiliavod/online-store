@@ -1,0 +1,65 @@
+<section id="hero" class="hero">
+  <div class="hero__bg">
+    <img class="hero__bgImage" [src]="heroImageUrl" alt="Online Store" />
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="container hero__content">
+    <div class="hero__copy">
+      <div class="hero__eyebrow">
+        <span class="spark">✦</span>
+        <span>{{ content.eyebrow }}</span>
+      </div>
+
+      <h1 class="hero__title">
+        {{ content.title }}
+        @if (content.titleAccent) {
+          <span class="hero__titleAccent">{{ content.titleAccent }}</span>
+        }
+      </h1>
+
+      <p class="hero__subtitle">{{ content.subtitle }}</p>
+
+      <div class="hero__actions">
+        <button
+          pButton
+          type="button"
+          class="hero-primary"
+          severity="primary"
+          (click)="goTo(content.primaryCtaTarget)"
+        >
+          {{ content.primaryCtaLabel }}
+        </button>
+
+        <button
+          pButton
+          type="button"
+          class="hero-secondary"
+          severity="secondary"
+          outlined="true"
+          (click)="goTo(content.secondaryCtaTarget)"
+        >
+          {{ content.secondaryCtaLabel }}
+        </button>
+      </div>
+
+      <div class="hero__stats">
+        @for (s of content.stats; track s.label) {
+          <div class="hero__stat">
+            <div class="hero__statValue">{{ s.value }}</div>
+            <div class="hero__statLabel">{{ s.label }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="hero__scrollHint"
+    type="button"
+    (click)="goTo('categories')"
+    aria-label="Scroll to categories"
+  >
+    <i class="pi pi-arrow-down"></i>
+  </button>
+</section>

@@ -1,0 +1,128 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+
+  transition: background 220ms ease, border-color 220ms ease, backdrop-filter 220ms ease, box-shadow 220ms ease;
+}
+
+/* Transparent only on home + at top */
+.nav--transparent {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+/* Solid state (home after scroll + all other routes) */
+.nav--solid {
+  background: rgba(250, 247, 244, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 72px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+
+  &__mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 800;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    font-size: 13px;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+  flex: 1;
+  margin-left: 8px;
+
+  &__item {
+    text-decoration: none;
+    color: rgba(0,0,0,0.65);
+    font-size: 14px;
+    padding: 8px 6px;
+    border-radius: 10px;
+
+    &:hover {
+      color: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.04);
+    }
+
+    &.isActive {
+      color: rgba(0,0,0,0.95);
+      font-weight: 800;
+    }
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search input {
+  width: 320px;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.iconBtn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: transparent;
+  color: rgba(0,0,0,0.75);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(0,0,0,0.04);
+    color: rgba(0,0,0,0.95);
+  }
+}
+
+.cartBtn .badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}

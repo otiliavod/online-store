@@ -1,0 +1,22 @@
+<section class="products">
+  <div class="container">
+    <h2>Toate produsele</h2>
+    <p class="count">{{ products.length }} produse găsite</p>
+
+    <div class="grid">
+      @for (product of products; track product.id) {
+        <app-product-card [product]="product"></app-product-card>
+      }
+    </div>
+
+    <div class="see-all">
+      <p-button
+        class="seeAllBtn"
+        label="Vezi toate produsele"
+        icon="pi pi-arrow-right"
+        iconPos="right"
+        (onClick)="goTo('products')"
+      ></p-button>
+    </div>
+  </div>
+</section>

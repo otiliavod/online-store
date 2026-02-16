@@ -1,0 +1,197 @@
+/* =========================
+   Overlay / Mask
+   ========================= */
+.p-dialog-mask,
+.p-component-overlay {
+  background: rgba(0, 0, 0, 0.82) !important;
+}
+
+/* =========================
+   Dialog shell
+   ========================= */
+.loginModal {
+  width: min(420px, 92vw);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* =========================
+   Header
+   ========================= */
+.loginModal .p-dialog-header {
+  border: 0 !important;
+  background: transparent !important;
+  position: relative !important;
+
+  padding: 22px 16px 8px !important;
+  min-height: 108px !important;
+}
+
+/* make X not affect centering */
+.loginModal .p-dialog-header-icons {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  margin: 0 !important;
+}
+
+.loginModal .p-dialog-header-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.loginModal .p-dialog-header-icon:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* True centered header layout */
+.loginModal__header {
+  display: grid;
+  grid-template-columns: 38px 1fr 38px; /* reserve same space as close icon */
+  align-items: center;
+  width: 100%;
+}
+
+.loginModal__headerSide {
+  width: 38px;
+  height: 38px;
+}
+
+.loginModal__headerCenter {
+  display: flex;
+  justify-content: center;
+}
+
+/* Logo */
+.loginModal__logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 900;
+  font-size: 15px;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================
+   Content padding
+   ========================= */
+.loginModal .p-dialog-content {
+  padding: 8px 28px 30px !important;
+}
+
+/* =========================
+   Body text
+   ========================= */
+.loginModal__body {
+  text-align: center;
+}
+
+.loginModal__title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.15;
+  color: rgba(0, 0, 0, 0.86);
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+}
+
+.loginModal__subtitle {
+  margin: 8px 0 18px;
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* =========================
+   Segmented tabs
+   ========================= */
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  margin: 0 auto 18px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  padding: 11px 12px;
+  font-weight: 800;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.tab--active {
+  background: #fff;
+  color: rgba(0, 0, 0, 0.82);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================
+   Form
+   ========================= */
+.form {
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.72);
+  margin-bottom: 6px;
+}
+
+.loginModal .p-inputtext {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.pw .p-password,
+.pw .p-password-input {
+  width: 100%;
+}
+
+/* =========================
+   Primary button
+   ========================= */
+.p-button.btnPrimary {
+  width: 100% !important;
+  height: 44px !important;
+  border-radius: 14px !important;
+  font-weight: 900 !important;
+  border: 0 !important;
+
+  background: linear-gradient(90deg, var(--brand), var(--brand-2)) !important;
+  box-shadow: 0 12px 26px rgba(207, 106, 58, 0.25) !important;
+  color: #fff !important;
+}
+
+.p-button.btnPrimary:hover {
+  filter: brightness(0.98) !important;
+}
+
+.p-button.btnPrimary:active {
+  transform: translateY(1px);
+}
+
+.p-button.btnPrimary:focus-visible {
+  outline: 2px solid rgba(207, 106, 58, 0.45) !important;
+  outline-offset: 2px !important;
+}

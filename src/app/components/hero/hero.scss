@@ -1,0 +1,148 @@
+:host { display: block; }
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 72px;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__bgImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    transform: scale(1.02);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(250, 247, 244, 0.95) 0%,
+        rgba(250, 247, 244, 0.78) 38%,
+        rgba(250, 247, 244, 0.15) 70%,
+        rgba(250, 247, 244, 0.00) 100%
+    );
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding-top: 72px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__copy {
+    width: min(620px, 100%);
+    padding-left: 6px;
+  }
+
+  &__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--brand);
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 60px;
+    line-height: 1.02;
+    letter-spacing: -0.6px;
+  }
+
+  &__titleAccent {
+    color: var(--brand);
+  }
+
+  &__subtitle {
+    margin: 14px 0 22px;
+    color: rgba(0, 0, 0, 0.55);
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 62ch;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 52px;
+    flex-wrap: wrap;
+  }
+
+  &__statValue {
+    color: var(--brand);
+    font-weight: 900;
+    font-size: 20px;
+  }
+
+  &__statLabel {
+    margin-top: 4px;
+    color: rgba(0, 0, 0, 0.55);
+    font-size: 13px;
+  }
+
+  &__scrollHint {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translate(-50%);
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(250, 247, 244, 0.65);
+    color: rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+}
+
+/* PrimeNG Hero button skin (brand) */
+:host ::ng-deep .p-button.hero-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+
+  &:hover {
+    background: var(--brand-2);
+    border-color: var(--brand-2);
+  }
+}
+
+:host ::ng-deep .p-button.hero-secondary {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.22);
+  color: rgba(0,0,0,0.82);
+
+  &:hover {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.30);
+    color: rgba(0,0,0,0.90);
+  }
+}
