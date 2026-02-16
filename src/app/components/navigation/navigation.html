@@ -56,7 +56,8 @@
 
 <!-- Mobile drawer -->
 <p-drawer
-  [(visible)]="mobileOpen()"
+  [visible]="mobileOpen()"
+  (visibleChange)="mobileOpen.set($event)"
   position="right"
   [modal]="true"
   [dismissible]="true"

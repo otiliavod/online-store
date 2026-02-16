@@ -132,71 +132,56 @@
   flex: 1;
 }
 
-/* MOBILE */
+/* Mobile nav: stack + scrollable links */
 @media (max-width: 900px) {
   .nav__inner {
     height: auto;
     min-height: 64px;
     padding: 10px 0;
-    gap: 12px;
+    flex-wrap: wrap;
+    row-gap: 10px;
   }
 
-  .brand__name {
-    font-size: 16px;
+  /* brand stays left, right icons stay right */
+  .brand {
+    flex: 1 1 auto;
   }
 
-  .search input {
-    width: 100%;
+  .right {
+    flex: 0 0 auto;
   }
-}
 
-/* PrimeNG Drawer mobile menu styling */
-:host ::ng-deep .mobileNav {
-  width: min(86vw, 360px);
-  background: var(--bg);
-}
+  /* links move to a full-width second row */
+  .links {
+    order: 3;
+    flex: 0 0 100%;
+    margin-left: 0;
 
-.mobileNav__content {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding-bottom: 6px;
 
-.mobileNav__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    /* helps prevent accidental wrap */
+    white-space: nowrap;
+  }
 
-.mobileNav__title {
-  font-weight: 900;
-  font-size: 16px;
-  letter-spacing: 0.2px;
-}
+  .links__item {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
 
-.mobileNav__search input {
-  width: 100%;
-  border-radius: 14px;
-  padding: 10px 12px;
-}
+  /* search is too wide for mobile nav row */
+  .search {
+    display: none;
+  }
 
-.mobileNav__links {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.mobileNav__item {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.75);
-  padding: 12px 12px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0,0,0,0.06);
-
-  &.isActive {
-    color: rgba(0, 0, 0, 0.95);
-    font-weight: 800;
-    border-color: rgba(0,0,0,0.12);
+  .nav__inner,
+  .links,
+  .right {
+    min-width: 0;
   }
 }
