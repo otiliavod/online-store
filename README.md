@@ -13,9 +13,9 @@ Modern Angular patterns
 Scalable structure for future backend integration
 
 
-## Hosting link
+## Hosting link - Netlify
 
-[To start a local development server, run:](https://myonline-store-presentation.netlify.app/)
+https://myonline-store-presentation.netlify.app/
 
 
 ## Tech Stack
